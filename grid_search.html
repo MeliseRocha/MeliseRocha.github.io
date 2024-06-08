@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+						</div>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>Grid Search and Machine Learning Hyper Parameter Tuning</h1>
+							<span class="image main"><img src="images/agence-olloweb-d9ILr-dbEdg-unsplash.jpg" alt="" /></span>
+							<p>Sometimes we need to test multiple machine learning models to see which one will be the best for the problem we are dealing with. Further from that, each of these models can have its parameters fine-tuned to perform best predictions.</p>
+                            <p>Hyperparameter tuning is the process of optimizing the hyperparameters of a machine learning model. Hyperparameters are parameters that are not learned from the data but are set prior to the training process. Grid search is a method used in machine learning to find the optimal hyperparameters for a given dataset. It involves systematically testing all possible combinations of a predefined set of hyperparameters. </p>
+                            <p>Today, I will show how to perform multiple tests at once in a simple <a href="https://raw.githubusercontent.com/carlosfab/curso_data_science_na_pratica/master/modulo_03/heart-disease-uci.csv">Dataset</a> for heart disease prediction.</p>
+
+                            <p>As a first step we collect basic information about the dataset. As shown below, all the columns are numerical data, there is no missing values and the classes are already relatively balanced.</p>
+							
+							<iframe src="grid_search/loading_data.html" width="100%" height="600px" frameborder="0"></iframe>
+                    
+                            <h2>Data Preparation and Fitting the Models</h2>
+                            <p>Not all classifiers need to have the data preprocessed and standardized, but some of them like SVC need the data to be standardized and normalized. For that, I have chosen the <em>Standard Scaler</em> and <em>One Hot Encoder</em>  from <em>Sklearn</em> to pre-process all the data.</p>
+                            <p>Next, in <em>param_grid</em> I am defining some hiperparameters from each model that I want to test, the <em>random_state = 42</em> ensures reproducibility. </p>
+                            <p>Then I am defining some functions to calculate the accuracy, precision, and recall (sensitivity) at the Youden Point. This is a threshold that will maximize the metrics with the highest possible number  of True Positives and True Negatives. I will select the best model based on this later.</p>
+                            <iframe src="grid_search/doing_grid_search.html" width="100%" height="600px" frameborder="0"></iframe>
+
+                            <h2>Plotting Dashboards</h2>
+                            <p>Here I am plotting an interactive dashboard, when you touch your mouse on the purple dots it will appear the parameters of the model with that Accuracy and Precision. So you can reproduce it outside of the Grid Search.</p>
+                            <iframe src="grid_search/dashboard_grid_search.html" width="100%" height="600px" frameborder="0"></iframe>
+                            <p>The models overall had an amazing performance, probably the two groups had very distinct characteristics. Which makes it easy to differentiate between both.</p>
+                        
+							<h2>Testing one of the Extra Trees model that interested me</h2>
+
+                            <p>	Below, I am testing one of the Extra Trees models that I liked. It is important to keep the same process for pre-process the data as used to perform Grid Search. I am also plotting the Confusion Matrix and ROC-curve for a more detailed visualization.</p>
+							<iframe src="grid_search/testing_model.html" width="100%" height="600px" frameborder="0"></iframe>
+
+							<p>Here, we can notice that the model did not actually have an amazing performance as expected. The model is overfitted, and probably all other models generated in this grid search, showing that it would not be a good application in real life.</p>
+							
+					</div>
+
+				<!-- Footer -->
+				<footer id="footer">
+					<div class="inner">
+						<section>
+							<h2>Follow</h2>
+							<ul class="icons">
+								<li><a href="https://github.com/MeliseRocha" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+							</ul>
+						</section>
+						<ul class="copyright">
+							<li>&copy; Untitled. All rights reserved</li>
+						</ul>
+					</div>
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

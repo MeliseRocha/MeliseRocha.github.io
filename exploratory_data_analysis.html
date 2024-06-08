@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+						</div>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>Exploratory Data Analysis (EDA)</h1>
+							<span class="image main"><img src="images/rc-xyz-nft-gallery-w9coDxtsfts-unsplash.jpg" alt="" /></span>
+							<p>Today I will cover the most important steps in Exploratory Data Analysis, a important step to understand the kind of data we are dealing. The dataset is related to insurance costs and is available at <a href="https://www.kaggle.com/datasets/mirichoi0218/insurance?resource=download">Dataset</a>.</p>
+                            <p>As a first step we collect basic information about the dataset: </p>
+							
+							<iframe src="exploratory_data_analysis/understanding_data.html" width="100%" height="600px" frameborder="0"></iframe>
+                            <p>As you can see we have the dataset has 1337 observations, with 7 variables. The <em>describe</em> command gives us information about the count, mean, std, min, max as well as lower, meadian and upper percentiles.</p>
+                            <h2>Spotting duplicates and null values</h2>
+                            <p>A lot of times datasets comes with empty rows and duplicated values, which makes difficult an EDA. For dealing with missing values, first evaluate its impact; if small, deleting might work, but be cautious of losing important info. You can impute missing values, like using mean/median of the columns.Luckily, there are no missing values in this dataset and only one duplicate, as shown below: </p>
+                            <iframe src="exploratory_data_analysis/spotting_duplicates.html" width="100%" height="600px" frameborder="0"></iframe>
+                            <h2>Performing Univariate Analysis for Numerical Features</h2>
+                            <p>The purpose of the univariate analysis is to understand the distribution of values for a single variable. I will plot some graphs and do a further analysis below.</p>
+                            <iframe src="exploratory_data_analysis/univariate_analysis_numerical_features.html" width="100%" height="600px" frameborder="0"></iframe>
+                            <p>As you can see, the <em>Charges</em> distribution is Right-skewed while the <em>Body Mass Index</em> follows a normal distribution. The presence of outliers might heavily affect these graphs too, which brings me to the next topic.</p>
+
+                            <h3>Dealing with outliers</h3>
+                            <p>A boxplot is a standardized way of displaying the dataset based on a five-number summary: the minimum, the maximum, the sample median, and the first and third quartiles. The Interquartile Range, or IQR, is a measure of statistical dispersion. It represents the range within which the middle 50% of the data falls. To calculate the IQR, you need to find the difference between the 75th percentile (Q3) and the 25th percentile (Q1). Any data point that falls below the lower bound (Q1–1.5 * IQR) or up the upper bound (Q3 + 1.5 * IQR) is considered an outlier.</p>
+
+                            <iframe src="exploratory_data_analysis/cleaning_outliers.html" width="100%" height="600px" frameborder="0"></iframe>
+
+                            <p>As you can notice the ranges on the y-axis are smaller after removing the outliers, but the <em>Charges</em> distribution still Right-skewed. In total, 153 rows were considered outliers.</p>
+                            <h2>Performing Univariate Analysis for Categorical Features</h2>
+                            <p>A bar chart is commonly used to visualize categorical features. I think that from this analysis is important to spot that the data is well distributed between different regions, meaning that the clients are not concentrated in only one region.</p>
+						
+
+ 							<iframe src="exploratory_data_analysis/univariate_analysis_categorical.html" width="100%" height="600px" frameborder="0"></iframe>
+                            
+							<h2>Performing Bivariate Analysis</h2>
+							Bivariate analysis is the analysis of exactly two variables. We will use bivariate analysis to find relationships between two variables. 
+							<iframe src="exploratory_data_analysis/bivariate_analysis.html" width="100%" height="600px" frameborder="0"></iframe>
+
+							<p>Here, we can notice a weak positive correlation between Age and Charge. But, on the other hand it is explicit that smokers will pay higher insurance costs than non-smokers.</p>
+							
+					</div>
+
+				<!-- Footer -->
+				<footer id="footer">
+					<div class="inner">
+						<section>
+							<h2>Follow</h2>
+							<ul class="icons">
+								<li><a href="https://github.com/MeliseRocha" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+							</ul>
+						</section>
+						<ul class="copyright">
+							<li>&copy; Untitled. All rights reserved</li>
+						</ul>
+					</div>
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

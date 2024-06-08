@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+						</div>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>Spam Email Identifier With Tensorflow</h1>
+							<span class="image main"><img src="images/volodymyr-hryshchenko-V5vqWC9gyEU-unsplash.jpg" alt="" /></span>
+							<p>I am going to build a TensorFlow-based Spam detector, in simpler terms, we will have to classify the texts as Spam or Ham.</p>
+                            <p>The <a href="https://www.kaggle.com/code/akanksha496/spam-detection-using-tensorflow/input">Dataset</a> is made of Text Messages. But it is severely unbalanced, so I needed to do a Random Undersampling.</p>
+
+                        
+							<iframe src="spam_identifier/spam_loading_data].html" width="100%" height="600px" frameborder="0"></iframe>
+                    
+                            <h2>Preparing the Data</h2>
+							<p>I have converted "Ham" and "Spam" to binary variables. Tokenization is the process of converting text into numerical tokens. Each unique word in the text is assigned a unique integer, or ‘token’. This allows us to represent our text in a way that can be processed by a machine learning model. </p>
+							<p>After tokenization, we often end up with sequences of different lengths, since sentences in natural language can vary in length. However, machine learning models usually require input of a fixed size. This is where padding comes in.Padding is the process of making all sequences the same length by adding '0’s at the end (or beginning) of shorter sequences.</p>
+
+                            <iframe src="spam_identifier/spam_preparing_data.html" width="100%" height="600px" frameborder="0"></iframe>
+
+                            <h2>Training the Deep Neural Network </h2>
+
+                            <p>The model built is a ‘Sequential’ model because it is a sequence of layers. It starts with an Embedding layer that transforms integer-encoded vocabulary into learned vectors, adding a dimension to the output. A GlobalAveragePooling1D layer follows, providing a fixed-length output vector by averaging over the sequence dimension. Next is a Dense layer with 32 units and a ‘relu’ activation function for non-linearity. A Dropout layer with a rate of 0.3 helps prevent overfitting. The final Dense layer uses a ‘sigmoid’ activation function for binary classification, outputting a scalar prediction indicating the probability of the positive class.</p>
+							<iframe src="spam_identifier/spam_train_model.html" width="100%" height="600px" frameborder="0"></iframe>
+							<p>The model achieved an accuracy of 95%, which is really good. It started overfitting after Epoch 10</p>
+                            <h2>Predictions</h2>
+							<p>I have done the predictions using the Youden Point, this is an optimal Threshold on a ROC curve that maximizes the sum of sensitivity and specificity, representing a balance between these two classification model performance metrics.</p>
+							<iframe src="spam_identifier/spam_prediction.html" width = 100% height="600px" frameborder="0"></iframe>
+						    			
+					</div>
+
+				<!-- Footer -->
+				<footer id="footer">
+					<div class="inner">
+						<section>
+							<h2>Follow</h2>
+							<ul class="icons">
+								<li><a href="https://github.com/MeliseRocha" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+							</ul>
+						</section>
+						<ul class="copyright">
+							<li>&copy; Untitled. All rights reserved</li>
+						</ul>
+					</div>
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
